@@ -1,3 +1,9 @@
+# idea
+
+.idea
+
+# Ruby ignore
+
 *.gem
 *.rbc
 /.config
