@@ -40,7 +40,7 @@ docker run --name jekyll-neojal ^
 1. Start the previously created container and list the files of the new Jekyll project:
 ~~~bash
 > docker start jekyll-neojal
-> docker exec -ti container_name /bin/bash
+> docker exec -ti jekyll-neojal /bin/bash
 # ls 
 404.html        Gemfile         Gemfile.lock    _config.yml
 _posts          _site           about.markdown  index.markdown
