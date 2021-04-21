@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>JVM and Memory | Neojal Github Site</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="JVM and Memory" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="JVM and Memory jenkovjava-memory-model Heap, Metaspace, Stack Stack Memory Difference between Stack and Heap? Stack contains methods, and its primitive values as well as object references. Stack is LIFO. Objects are stored in Heap, Stack contains references to them. Heap is used for all the application whereas Stack is used by one Thread. Objects in Heap are globally accessible whereas Stack can’t be accessed by other Threads. When the memory is full, JVM throws for each case: Stack: java.lang.StackOverFlowError Heap: java.lang.OutOfMemoryError Heap options: -Xms, -Xmx Startup size and Maximum size of Heap memory. Stack option: -Xss Stack memory size. String Pool Whats a Java String Pool Thread Dumps jstack kill -3 # jstack (jdk) $ jstack -l &lt;pid&gt; &gt; &lt;file-path&gt; # kill -3 $ kill -3 &lt;pid&gt; JVisualVM Java Mission Control (JMC) How to take Thread dumps" />
+<meta property="og:description" content="JVM and Memory jenkovjava-memory-model Heap, Metaspace, Stack Stack Memory Difference between Stack and Heap? Stack contains methods, and its primitive values as well as object references. Stack is LIFO. Objects are stored in Heap, Stack contains references to them. Heap is used for all the application whereas Stack is used by one Thread. Objects in Heap are globally accessible whereas Stack can’t be accessed by other Threads. When the memory is full, JVM throws for each case: Stack: java.lang.StackOverFlowError Heap: java.lang.OutOfMemoryError Heap options: -Xms, -Xmx Startup size and Maximum size of Heap memory. Stack option: -Xss Stack memory size. String Pool Whats a Java String Pool Thread Dumps jstack kill -3 # jstack (jdk) $ jstack -l &lt;pid&gt; &gt; &lt;file-path&gt; # kill -3 $ kill -3 &lt;pid&gt; JVisualVM Java Mission Control (JMC) How to take Thread dumps" />
+<link rel="canonical" href="/java/jvm-memory.html" />
+<meta property="og:url" content="/java/jvm-memory.html" />
+<meta property="og:site_name" content="Neojal Github Site" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-21T18:11:29-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="JVM and Memory" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","description":"JVM and Memory jenkovjava-memory-model Heap, Metaspace, Stack Stack Memory Difference between Stack and Heap? Stack contains methods, and its primitive values as well as object references. Stack is LIFO. Objects are stored in Heap, Stack contains references to them. Heap is used for all the application whereas Stack is used by one Thread. Objects in Heap are globally accessible whereas Stack can’t be accessed by other Threads. When the memory is full, JVM throws for each case: Stack: java.lang.StackOverFlowError Heap: java.lang.OutOfMemoryError Heap options: -Xms, -Xmx Startup size and Maximum size of Heap memory. Stack option: -Xss Stack memory size. String Pool Whats a Java String Pool Thread Dumps jstack kill -3 # jstack (jdk) $ jstack -l &lt;pid&gt; &gt; &lt;file-path&gt; # kill -3 $ kill -3 &lt;pid&gt; JVisualVM Java Mission Control (JMC) How to take Thread dumps","headline":"JVM and Memory","dateModified":"2021-04-21T18:11:29-05:00","datePublished":"2021-04-21T18:11:29-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"/java/jvm-memory.html"},"url":"/java/jvm-memory.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Neojal Github Site" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Neojal Github Site</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">JVM and Memory</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-04-21T18:11:29-05:00" itemprop="datePublished">Apr 21, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="jvm-and-memory">JVM and Memory</h1>
+
+<p><a href="http://tutorials.jenkov.com/java-concurrency/java-memory-model.html">jenkovjava-memory-model</a></p>
+
+<hr />
+
+<h5 id="heap-metaspace-stack">Heap, Metaspace, Stack</h5>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5112AQEzQodSXF2YTg/article-cover_image-shrink_720_1280/0?e=1585785600&amp;v=beta&amp;t=8nx_lwGzG_9CS2s0Tom8oDaWAjdvDcjFo9xrwfQOPtc" alt="Java Memory Model" /></p>
+
+<h5 id="stack-memory">Stack Memory</h5>
+
+<p><img src="https://cdn.journaldev.com/wp-content/uploads/2014/08/Java-Heap-Stack-Memory.png" alt="Stack Memory" /></p>
+
+<h5 id="difference-between-stack-and-heap">Difference between Stack and Heap?</h5>
+
+<ul>
+  <li>Stack contains methods, and its primitive values as well as object references.</li>
+  <li>
+    <p>Stack is LIFO.</p>
+  </li>
+  <li>Objects are stored in Heap, Stack contains references to them.</li>
+  <li>Heap is used for all the application whereas Stack is used by one Thread.</li>
+  <li>
+    <p>Objects in Heap are globally accessible whereas Stack can’t be accessed by other Threads.</p>
+  </li>
+  <li>When the memory is full, JVM throws for each case:
+    <ul>
+      <li>Stack: java.lang.StackOverFlowError</li>
+      <li>Heap: java.lang.OutOfMemoryError</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="heap-options--xms--xmx">Heap options: -Xms, -Xmx</h5>
+
+<p>Startup size and Maximum size of Heap memory.</p>
+
+<h5 id="stack-option--xss">Stack option: -Xss</h5>
+
+<p>Stack memory size.</p>
+
+<h5 id="string-pool">String Pool</h5>
+
+<p><a href="https://www.journaldev.com/797/what-is-java-string-pool">Whats a Java String Pool</a></p>
+
+<h2 id="thread-dumps">Thread Dumps</h2>
+
+<ul>
+  <li>jstack</li>
+  <li>kill -3</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># jstack (jdk)</span>
+<span class="nv">$ </span>jstack <span class="nt">-l</span>  &lt;pid&gt; <span class="o">&gt;</span> &lt;file-path&gt;
+
+<span class="c"># kill -3</span>
+<span class="nv">$ </span><span class="nb">kill</span> <span class="nt">-3</span> &lt;pid&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>JVisualVM</li>
+  <li>Java Mission Control (JMC)</li>
+</ul>
+
+<p><a href="https://dzone.com/articles/how-to-take-thread-dumps-7-options">How to take Thread dumps</a></p>
+
+  </div><a class="u-url" href="/java/jvm-memory.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+<!--
+    <h2 class="footer-heading">Neojal Github Site</h2>
+    <a class="footer-heading" rel="author" href="/">Neojal Github Site</a>
+-->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Neojal Github Site
+            </li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/neojal"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">neojal</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Software Engineering, related topics and tools.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

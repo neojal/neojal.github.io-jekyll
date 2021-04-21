@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Docker for Java Developers | Neojal Github Site</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Docker for Java Developers" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Quickstart guide" />
+<meta property="og:description" content="Quickstart guide" />
+<link rel="canonical" href="/infrastructure/docker-for-java-dev.html" />
+<meta property="og:url" content="/infrastructure/docker-for-java-dev.html" />
+<meta property="og:site_name" content="Neojal Github Site" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-21T18:11:29-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Docker for Java Developers" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","description":"Quickstart guide","headline":"Docker for Java Developers","dateModified":"2021-04-21T18:11:29-05:00","datePublished":"2021-04-21T18:11:29-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"/infrastructure/docker-for-java-dev.html"},"url":"/infrastructure/docker-for-java-dev.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Neojal Github Site" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Neojal Github Site</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Docker for Java Developers</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-04-21T18:11:29-05:00" itemprop="datePublished">Apr 21, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="a-start-to-finish-guide-to-docker-with-java">A Start to Finish Guide to Docker with Java</h1>
+<p>https://stackify.com/guide-docker-java/</p>
+
+<h1 id="docker-for-java-developers">Docker for Java developers</h1>
+
+<p>https://github.com/arun-gupta/docker-for-java</p>
+
+<h2 id="running-your-first-container">Running your first container</h2>
+
+<p>```shell script</p>
+<h1 id="start-docker-daemon">start docker daemon</h1>
+<p>$ sudo dockerd</p>
+
+<h1 id="login-to-registry-so-images-can-be-downloaded">login to registry, so images can be downloaded</h1>
+<p>$ docker login</p>
+
+<h1 id="run-container-interactively-downloads-it-from-registry-if-not-present">run container interactively (downloads it from registry if not present)</h1>
+<p>$ docker container run -it jboss/wildfly</p>
+
+<h1 id="run-container-in-background">run container in background</h1>
+<p>$ docker container run -d jboss/wildfly</p>
+
+<h1 id="list-active-containers">list active containers</h1>
+<p>$ docker container ls</p>
+
+<h1 id="list-all-containers">list all containers</h1>
+<p>$ docker container ls -a</p>
+
+<h1 id="stop-container-by-id-or-name">stop container by id or name</h1>
+<p>$ docker container stop</p>
+
+<h1 id="run-container-setting-a-name">run container setting a name</h1>
+<p>$ docker container run –name wildfly -d jboss/wildfly</p>
+
+<h1 id="removes-a-container-even-if-running">removes a container even if running</h1>
+<p>$ docker container rm -f wildfly</p>
+
+<h1 id="starts-container-and-executes-a-single-command-instead-of-wildfly-server">starts container and executes a single command instead of wildfly server.</h1>
+<p>$ docker container run –name wildfly -it jboss/wildfly bash</p>
+
+<h1 id="now-we-are-inside-the-container">now we are inside the container.</h1>
+<p>[jboss@d20566e5550b ~]$ pwd
+/opt/jboss</p>
+
+<h1 id="exit-and-finish-container">exit and finish container.</h1>
+<p>[jboss@d20566e5550b ~]$ exit
+$</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+## Ports
+
+```shell script
+# -P runs the container and redirects traffic to a random port
+$ docker container run --name wildfly -P -d jboss/wildfly
+
+# see the port
+$ docker container ls
+
+ONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                     NAMES
+9adb133f5324        jboss/wildfly       "/opt/jboss/wildfly/…"   About a minute ago   Up About a minute   0.0.0.0:32769-&gt;8080/tcp   wildfly
+
+# see wildfly container logs
+$ docker container logs wildfly
+</code></pre></div></div>
+<p>Open in web browser: http://localhost:32769/</p>
+
+<p>```shell script</p>
+<h1 id="-p-80808080-we-specify-the-redirection-ports">-p 8080:8080 we specify the redirection ports</h1>
+<p>$  docker container run –name wildfly -p 8080:8080 -d jboss/wildfly</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Open in web browser: http://localhost:32769/
+
+## Volume Mapping 
+
+Mapping/mounting a local directory into a container.
+
+```shell script
+# remove the existent wildfly container.
+
+# volume mapping with -v option
+$ docker container run -d --name web -p 8080:8080 -v `pwd`/webapp.war:/opt/jboss/wildfly/standalone/deployments/webapp.war jboss/wildfly
+</code></pre></div></div>
+
+<p>Now the webapp is running in the container:
+http://localhost:8080/webapp/resources/persons</p>
+
+<h2 id="create-your-first-docker-image-dockerfile">Create your first Docker Image (Dockerfile)</h2>
+
+<p>Create an empty directory, then create a Dockerfile.</p>
+
+<p>```shell script
+$ vim Dockerfile</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+```dockerfile
+FROM ubuntu
+ 
+CMD echo "Hello world!"
+</code></pre></div></div>
+
+<p>```shell script
+$ docker image –help</p>
+
+<h1 id="build-the-image-tag-helloworld--this-context">build the image, tag helloworld, . this context</h1>
+<p>$ docker image build -t helloworld .</p>
+
+<h1 id="history">history</h1>
+<p>$ docker history helloworld</p>
+
+<h1 id="run-helloworld-container">run helloworld container</h1>
+<p>$ docker container run helloworld</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+If the directory ins't empty, then its contents will be sent to the container. 
+
+## Create your first Java Docker Image (Dockerfile)
+
+Explore DockerHub: https://hub.docker.com/_/openjdk
+
+In a new directory, then create a Dockerfile:
+
+```dockerfile
+FROM openjdk
+CMD java -version
+</code></pre></div></div>
+
+<p>Then build (setting a tag name) and run the image:</p>
+
+<p>```shell script
+$ docker image build -t hellojava .</p>
+
+<p>$ docker image ls</p>
+
+<p>$ docker container run hellojava
+penjdk version “13.0.1” 2019-10-15
+OpenJDK Runtime Environment (build 13.0.1+9)
+OpenJDK 64-Bit Server VM (build 13.0.1+9, mixed mode, sharing)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Using alpine image which is smaller:
+
+```dockerfile
+FROM openjdk:jdk-alpine
+CMD java -version
+</code></pre></div></div>
+
+<p>```shell script
+$ docker image build -t hello-jdk-alpine .</p>
+
+<p>$ docker image ls</p>
+
+<p>$ docker container run hello-jdk-alpine
+openjdk version “1.8.0_171”
+OpenJDK Runtime Environment (IcedTea 3.8.0) (Alpine 8.171.11-r0)
+OpenJDK 64-Bit Server VM (build 25.171-b11, mixed mode)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+## Docker Machine
+
+We're using: https://hub.docker.com/r/jboss/wildfly, here is a description of how to run this image.
+
+Some new Dockerfile commands:
+
+* COPY: copy new files or directories to container filesystem.
+* ADD: copies then allows file auto-extraction in the image:
+    * ADD app.tar.gz /opt/var/myapp
+    * Can download files from URL, but recommended curl of wget.
+    
+```dockerfile
+FROM jboss/wildfly
+
+COPY ../webapp.war /opt/jboss/wildfly/standalone/deployments/webapp.war
+</code></pre></div></div>
+
+<p>```shell script
+$ docker run -p 8080:8080 -d helloweb</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Then go to: http://localhost:8080/webapp/resources/persons
+    
+## Docker Commands
+
+```shell script
+[neojal@manjaro ~]$ docker --help
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default "/home/neojal/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/home/neojal/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/home/neojal/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/home/neojal/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  builder     Manage builds
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  engine      Manage the docker engine
+  image       Manage images
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+</code></pre></div></div>
+
+
+  </div><a class="u-url" href="/infrastructure/docker-for-java-dev.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+<!--
+    <h2 class="footer-heading">Neojal Github Site</h2>
+    <a class="footer-heading" rel="author" href="/">Neojal Github Site</a>
+-->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Neojal Github Site
+            </li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/neojal"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">neojal</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Software Engineering, related topics and tools.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
