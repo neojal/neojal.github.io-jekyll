@@ -34,3 +34,16 @@ $ bundle exec jekyll serve -l -o
 
 * Setting up [Collections](https://jekyllrb.com/docs/collections/).
 
+### Theme Overriding 
+[Jekyll Themes](https://jekyllrb.com/docs/themes/) 
+
+
+Jekyll themes are composed by this four directories which, if copied to the root of your new blog, can override the
+installed theme and you can customize it: 
+
+```shell script
+/assets
+/_layouts
+/_includes
+/_sass
+```
