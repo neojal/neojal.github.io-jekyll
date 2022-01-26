@@ -52,29 +52,16 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 
-collections_dir: my_collections
-
 collections:
-  # todo: reorganize, order.
-  java:
-    output: true
-  # todo: dp classification, dp specific files
-  design-patterns:
-    output: true
-  git:
-      output: true
-  # todo: organize this topics as systems engineering
-  infrastructure:
-    output: true
-  microservices:
-    output: true
-  software-engineering:
-    output: true
-  spring:
-    output: true
-  testing:
-    output: true
-  web-services:
+
+  # contains the topic indexes.
+  topic:
     output: true
 
+  # for each of these topics, add an index in the collection above
+  topic-design-patterns:
+    output: true
+  topic-java:
+    output: true
 
+# todo: move topics from 'old_collections' to site root.

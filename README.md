@@ -5,11 +5,22 @@ Jekyll project to generate the static site [neojal.github.io](neojal.github.io).
 
 [Jekyll Quickstart](https://jekyllrb.com/docs/)
 
-### Issues found on first run:
-[Dependency not found: webrick](https://github.com/jekyll/jekyll/issues/8523). 
-Install the suggested gems, then add this to _Gemfile_: 
-```ruby
-gem "webrick"
+Install Ruby: 
+```sh
+$ sudo pacman -S ruby
+```
+
+Add ruby to the PATH:
+```shell
+WARNING:  You don't have $HOME/.local/share/gem/ruby/3.0.0/bin in your PATH,
+	  gem executables will not run.
+	  
+$ echo 'export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"' 
+```
+
+Install Bundler: 
+```sh
+$ gem install bundler
 ```
 
 ### Running the site locally
@@ -18,11 +29,17 @@ gem "webrick"
     ```shell script
     $ cd neojal.github.io-jekyll
     ```
-2. Build the site and make it available on a local server.
+
+2. Update the project
+    ```shell script
+    $ bundle update
+    ```
+ 
+3. Build the site and make it available on a local server.
     ```shell script
     $ bundle exec jekyll serve
     ```
-3. Browse to http://localhost:4000
+4. Browse to http://localhost:4000
 
 ### Enabling live-reload
 

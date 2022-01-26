@@ -28,10 +28,9 @@ layout: default
       {%- endfor -%}
     </ul>
   <hr>
+  {%- endif -%}
 
-
-
-  <h2>The Really Big Index</h2>
+  <!--<h2>The Really Big Index</h2>
   <ul>{% for collection in site.collections %}
     <li>
       <h3>{{ collection.label | upcase | replace: "-", " "}}</h3>
@@ -43,9 +42,16 @@ layout: default
     <hr>
     {% endfor %}
   </ul>
+  <hr>-->
+
+  <h2>The Small Index</h2>
+  {% for topic in site.topic %}
+      <ul>
+        <li><a href="{{topic.url}}">{{ topic.title }}</a> - {{ topic.description }}</li>
+      </ul>
+    <hr>
+    {% endfor %}
   <hr>
 
   <!--<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>-->
-  {%- endif -%}
-
 </div>
